@@ -1,0 +1,9 @@
+SAGNAT — PÁGINA WEB MULTIPÁGINA
+
+Archivos:
+index.html (inicio), funcionamiento.html, cuidados.html, tips.html, simulador.html
+css/style.css (diseño), js/script.js (interacciones), manifest.json y service-worker.js.
+
+Descomprime el ZIP y abre index.html en el navegador. Usa el menú superior para ir a las demás páginas: cada sección es un archivo HTML separado.
+Las fotografías se cargan desde Unsplash y requieren conexión a internet. El simulador es visual; no controla Arduino real. La explicación con servomotor es un ejemplo habitual, así que confirma los componentes de tu prototipo y video.
+Para instalar la web como aplicación o usar la caché sin conexión, ábrela desde localhost o HTTPS.
