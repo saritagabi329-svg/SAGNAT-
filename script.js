@@ -10,3 +10,44 @@ document.addEventListener('DOMContentLoaded',()=>{
  reset?.addEventListener('click',()=>{clearTimeout(timer);busy=false;machine.classList.remove('dispensing');if(status)status.textContent='El dispensador está en espera.';if(button){button.disabled=false;button.textContent='🍽️ Dispensar alimento';}});
  if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // Checklist de la página Tips
+  const casillas = document.querySelectorAll(
+    '.checklist input[type="checkbox"]'
+  );
+  const progreso = document.getElementById("checkProgress");
+  const etiqueta = document.getElementById("progressLabel");
+
+  function actualizarChecklist() {
+    const total = casillas.length;
+    const completadas = document.querySelectorAll(
+      '.checklist input[type="checkbox"]:checked'
+    ).length;
+
+    if (progreso) {
+      progreso.style.width =
+        (total ? (completadas / total) * 100 : 0) + "%";
+    }
+
+    if (etiqueta) {
+      etiqueta.textContent =
+        `${completadas} de ${total} tareas completadas`;
+    }
+  }
+
+  casillas.forEach((casilla) => {
+    casilla.addEventListener("change", actualizarChecklist);
+  });
+
+  actualizarChecklist();
+
+  // Menú adaptable para móviles
+  const botonMenu = document.querySelector(".menu-toggle");
+  const navegacion = document.querySelector(".nav");
+
+  if (botonMenu && navegacion) {
+    botonMenu.addEventListener("click", () => {
+      navegacion.classList.toggle("open");
+    });
+  }
+});
